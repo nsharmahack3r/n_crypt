@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:n_crypt/screens/login_screen.dart';
 import 'package:n_crypt/service/secure_storage_service.dart';
 import 'package:routemaster/routemaster.dart';
 import 'controller/auth_controller.dart';
@@ -45,9 +44,9 @@ class _AppState extends ConsumerState<App> {
       ),
       routerDelegate: RoutemasterDelegate(routesBuilder: (context) {
         final User? user = ref.watch(userProvider);
-        if (user != null) {
-          return loggedInRoute;
-        }
+        // if (user != null) {
+        //   return loggedInRoute;
+        // }
         return loggedOutRoute;
       }),
       routeInformationParser: const RoutemasterParser(),
