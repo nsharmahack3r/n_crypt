@@ -5,8 +5,16 @@ import 'package:routemaster/routemaster.dart';
 import 'controller/auth_controller.dart';
 import 'models/user.dart';
 import 'routes.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  Firebase.initializeApp();
+  FirebaseMessaging.onBackgroundMessage((message) async {
+    print("background message received");
+    print(message.toMap().toString());
+  });
   runApp(const ProviderScope(child: App()));
 }
 
